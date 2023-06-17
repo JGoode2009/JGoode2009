@@ -55,21 +55,20 @@ def get_songs_by_artist(token, artist_id):
     headers = get_auth_header(token)
     result = get(url, headers=headers)
     json_result = json.loads(result.content)["tracks"]
-    return json_result[0]
+    return json_result
 
 
 token = get_token()
 # print(token)
-result = search_for_artist(token, "Aaliyah")
+result = search_for_artist(token, "Usher")
 artist_id = result[0]["id"]
 songs = get_songs_by_artist(token, artist_id)
-print(songs)
+# print(songs)
 
 
-for key in songs:
-    if key == 'name':
-        print(songs[key])
+# for key in songs:
+#     if key == 'name':
+#         print(songs[key])
 
-# for idx, song in enumerate(songs):
-#     print(f"{idx + 1}. {song['name']}")
-
+for idx, song in enumerate(songs):
+    print(f"{idx + 1}. {song['name']}")
